@@ -1,8 +1,6 @@
 #!/bin/bash
 
-
-
-# Build specific files
+# Capture arguments
 APP=${1%/}
 FILENAME=$2
 VOLNAME=$3
@@ -17,13 +15,13 @@ ICONPOS='145 260'
 TEXTSIZE='11'
 
 function display_usage {
-	echo "Usage: $0 Source.app Target.dmg Target Background.png Volicon.icns"
+	echo "Usage: $0 <source.app> <target.dmg> <title> <background.png> <volicon.icns>"
 	echo ""
-	echo "Source.app is a macOS Application"
-	echo "Target.dmg is the file to be created"
-	echo "Target is the title of the volume to be created"
-	echo "Background.png (optional) is a 600x400 pixel image file to be used as the window background"
-	echo "Volicon.icns (optional) is an icon to be used for the mounted volume"
+	echo "source.app is a macOS Application"
+	echo "target.dmg is the file to be created"
+	echo "title is the title of the volume to be created"
+	echo "background.png (optional) is a 600x400 pixel image file to be used as the window background"
+	echo "volicon.icns (optional) is an icon to be used for the mounted volume"
 	exit
 }
 
@@ -73,10 +71,8 @@ if [ -f "$VOLICON" ]; then
 	OPTIONS="$OPTIONS --volicon $VOLICON"
 fi
 
-echo $OPTIONS
-
 # Execute
-#create-dmg/create-dmg $OPTIONS $FILENAME $APP
+create-dmg/create-dmg $OPTIONS $FILENAME $APP
 
 
 
